@@ -1,6 +1,10 @@
-# Documentation
+# Docs — repository documentation
 
-This folder contains short guides and explanations for the flake and NixOS usage in this repository.
+This directory contains short guides and references for working with this repository.
 
-- `flake.md` — details about `flake.nix` and how the inputs/outputs are arranged.
-- `usage.md` — basic commands to build or apply configurations.
+Contents
+
+- `FLAKES.md` — flake inputs, outputs, and usage notes.
+- `CONFIGURATION.md` — notes about `configuration.nix` and module layout.
+
+Read these to understand how to update flakes and rebuild the system.

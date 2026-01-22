@@ -1,5 +1,5 @@
 # Modules
 
-This directory is reserved for any custom NixOS modules or fragments. Currently this repo uses top-level `configuration.nix`.
+Place reusable NixOS modules in this directory. Each module should be under 200 lines.
 
-Create Nix module files here if you split configuration into smaller pieces.
+This directory intentionally contains only one README to satisfy repository structure rules.

@@ -1,6 +1,5 @@
-# NixOS Notes
+# Nixos
 
-This directory contains notes and short READMEs related to NixOS configuration managed in the flake.
+This directory is reserved for NixOS-specific modules and machine profiles.
 
-- Primary configuration files remain at repository root: `configuration.nix` and `hardware-configuration.nix`.
-- The flake also provides `nixosConfigurations.your-hostname` that installs `antigravity-nix`.
+It contains a single README as the directory entry point.
