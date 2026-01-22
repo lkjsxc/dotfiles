@@ -1,0 +1,6 @@
+# Ignore generated docs and build artifacts
+build/
+result
+
+# nix store result link
+*.drv
