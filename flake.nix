@@ -12,13 +12,14 @@
     # A tiny Nix package that builds HTML docs from Markdown using pandoc.
     packages.${system}.docs = pkgs.runCommand "dotfiles-docs" {
       buildInputs = [ pkgs.pandoc ];
+      src = ./.;
     } ''
       mkdir -p $out
-      for f in docs/*.md; do
+      for f in $src/docs/*.md; do
         base=$(basename "$f" .md)
         pandoc -s -o $out/$base.html "$f"
       done
-      cp -r docs $out/docs
+      cp -r $src/docs $out/docs
     '';
 
     # Dev shell to make it convenient to build docs locally.
