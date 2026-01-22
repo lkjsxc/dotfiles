@@ -118,23 +118,6 @@
     microsoft-edge
   ];
 
-  # System-wide skeleton files to set KDE/Plasma default appearance to dark.
-  # These will be installed into /etc/skel so new users inherit the dark theme.
-  environment.etc = {
-    "skel/.config/kdeglobals".text = ''
-[General]
-ColorScheme=BreezeDark
-Name=Breeze Dark
-widgetStyle=Breeze
-ToolButtonStyle=icontext
-'';
-
-    "skel/.config/plasmarc".text = ''
-[Theme]
-name=BreezeDark
-'';
-  };
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
