@@ -116,6 +116,10 @@
     vscode
     noto-fonts-cjk-sans
     microsoft-edge
+
+    # Minecraft: Prism Launcher — convenient multi-version launcher for Minecraft
+    # Provided by nixpkgs as `prism-launcher` (ensure the channel/flake contains this package)
+    prism-launcher
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
