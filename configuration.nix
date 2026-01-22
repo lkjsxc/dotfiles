@@ -116,9 +116,6 @@
     vscode
     noto-fonts-cjk-sans
     microsoft-edge
-
-    # Ensure Java is available if needed by other tools
-    openjdk
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
