@@ -18,4 +18,10 @@
 
 ---
 
+## CI / Publishing ✅
+
+This repository builds and publishes the HTML docs automatically on pushes to `main`. The GitHub Actions workflow `/.github/workflows/docs.yml` installs `pandoc`, runs `./scripts/build_docs.sh`, and publishes the generated site to the `gh-pages` branch. You can also manually run the workflow via the Actions tab.
+
+---
+
 Notes: This repository follows a strict documentation layout: each directory contains exactly one `README.md` which acts as the directory TOC. Documentation files are kept short (< 300 lines) and source files are kept small (< 200 lines).
