@@ -10,6 +10,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/gaming.nix
     ];
 
   # Bootloader.
@@ -96,9 +97,25 @@
     isNormalUser = true;
     description = "lkjsxc";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
+    # Conditionally use a packaged prism-launcher if available in nixpkgs,
+    # otherwise provide a tiny placeholder wrapper that instructs the user.
+    packages = let
+      prismPackage = if builtins.hasAttr "prism-launcher" pkgs then pkgs.prism-launcher else pkgs.stdenv.mkDerivation {
+        name = "prism-launcher-placeholder";
+        src = null;
+        buildPhase = "true";
+        installPhase = ''
+          mkdir -p $out/bin
+          cat > $out/bin/prism-launcher <<'EOF'
+#!/bin/sh
+echo "Prism Launcher not available in this nixpkgs; see /etc/nixos/docs/PRISM-LAUNCHER.md"
+EOF
+          chmod +x $out/bin/prism-launcher
+        '';
+      };
+    in with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      prismPackage
     ];
     shell = pkgs.zsh;
   };
