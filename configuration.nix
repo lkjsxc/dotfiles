@@ -117,31 +117,9 @@
     noto-fonts-cjk-sans
     microsoft-edge
 
-    # Install Prism Launcher via Flatpak (Flathub) because `prism-launcher` package
-    # is not available in some nixpkgs channels. Flatpak will install it system-wide.
-    flatpak
-
     # Ensure Java is available if needed by other tools
     openjdk
   ];
-
-  # Activation script to install the Prism Launcher Flatpak on deployment.
-  # This runs during `nixos-rebuild switch` and ensures the Flathub remote and the
-  # `net.prismlauncher.PrismLauncher` Flatpak are installed system-wide.
-  system.activationScripts.install-prism-launcher = {
-    text = ''
-      if command -v flatpak >/dev/null 2>&1; then
-        # Ensure system repo directory exists so `flatpak install --system` works.
-        mkdir -p /var/lib/flatpak
-
-        # Add Flathub remote if missing and install system-wide
-        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-        # Install system-wide (requires root). If already installed, this will be a no-op.
-        flatpak install --system -y flathub net.prismlauncher.PrismLauncher
-      fi
-    '';
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
