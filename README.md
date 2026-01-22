@@ -20,7 +20,7 @@
 
 ## CI / Publishing ✅
 
-This repository builds and publishes the HTML docs automatically on pushes to `main`. The GitHub Actions workflow `/.github/workflows/docs.yml` installs `pandoc`, runs `./scripts/build_docs.sh`, and publishes the generated site to the `gh-pages` branch. You can also manually run the workflow via the Actions tab.
+This repository builds docs reproducibly using **Nix** in CI. The GitHub Actions workflow `/.github/workflows/docs.yml` runs `nix build .#docs` (PRs run a docs build check; pushes to `main` deploy to `gh-pages`). Use `nix build .#docs` or `nix develop` locally to reproduce CI results.
 
 ---
 

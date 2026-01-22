@@ -3,24 +3,56 @@ name: Build and Publish Docs
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch: {}
 
 jobs:
-  build:
+  check:
+    name: Docs build (PR check)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install pandoc
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc
+      - name: Setup Nix
+        uses: cachix/install-nix-action@v18
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
 
-      - name: Build docs
+      - name: Build docs with Nix
         run: |
-          chmod +x scripts/build_docs.sh
-          ./scripts/build_docs.sh
+          nix build .#docs
+          rm -rf build || true
+          mkdir -p build
+          cp -r result/* build/
+
+      - name: Verify docs
+        run: |
+          if ! ls build/*.html >/dev/null 2>&1; then echo "No HTML files generated"; exit 1; fi
+
+  deploy:
+    name: Build and deploy (main)
+    needs: check
+    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Nix
+        uses: cachix/install-nix-action@v18
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      - name: Build docs with Nix
+        run: |
+          nix build .#docs
+          rm -rf build || true
+          mkdir -p build
+          cp -r result/* build/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
