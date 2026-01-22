@@ -2,8 +2,8 @@
 # optional AppImage-based package (disabled by default).
 final: prev: let
   pkgs = final;
-  useAppImage = false; # Set to true to enable fetching the AppImage
-  appImageUrl = "https://example.com/prism-launcher.AppImage"; # replace with real URL when enabling
+  useAppImage = true; # Set to true to enable fetching the AppImage
+  appImageUrl = "https://github.com/PrismLauncher/PrismLauncher/releases/latest/download/prism-launcher.AppImage"; # update if upstream differs
 in
 let
   wrapper = pkgs.stdenv.mkDerivation {
