@@ -1,8 +1,6 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-#
-# Documentation: detailed editing and examples are in ./docs/CONFIGURATION.md
 
 { config, pkgs, ... }:
 
@@ -10,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./modules/gaming.nix
     ];
 
   # Bootloader.
@@ -97,26 +94,9 @@
     isNormalUser = true;
     description = "lkjsxc";
     extraGroups = [ "networkmanager" "wheel" ];
-    # Conditionally use a packaged prism-launcher if available in nixpkgs,
-    # otherwise provide a tiny placeholder wrapper that instructs the user.
-    packages = let
-      prismPackage = if builtins.hasAttr "prism-launcher" pkgs then pkgs.prism-launcher else pkgs.stdenv.mkDerivation {
-        name = "prism-launcher-placeholder";
-        src = null;
-        dontUnpack = true;
-        buildPhase = "true";
-        installPhase = ''
-          mkdir -p $out/bin
-          cat > $out/bin/prism-launcher <<'EOF'
-#!/bin/sh
-echo "Prism Launcher not available in this nixpkgs; see /etc/nixos/docs/PRISM-LAUNCHER.md"
-EOF
-          chmod +x $out/bin/prism-launcher
-        '';
-      };
-    in with pkgs; [
+    packages = with pkgs; [
       kdePackages.kate
-      prismPackage
+    #  thunderbird
     ];
     shell = pkgs.zsh;
   };
@@ -124,7 +104,8 @@ EOF
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Note: `nixpkgs.config` options are set in flake.nix when importing nixpkgs.
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
