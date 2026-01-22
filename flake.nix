@@ -16,10 +16,8 @@
             antigravity-nix.packages.x86_64-linux.default
           ];
         }
-        ./configuration.nix
-        ./hardware-configuration.nix
+        ./src/nixos/configuration.nix
       ];
     };
   };
 }
-
