@@ -117,13 +117,26 @@
     noto-fonts-cjk-sans
     microsoft-edge
 
-    # Minecraft: Prism Launcher — convenient multi-version launcher for Minecraft
-    # Provided by nixpkgs as `prism-launcher` (ensure the channel/flake contains this package)
-    prism-launcher
+    # Install Prism Launcher via Flatpak (Flathub) because `prism-launcher` package
+    # is not available in some nixpkgs channels. Flatpak will install it system-wide.
+    flatpak
 
-    # Ensure Java is available for the launcher
+    # Ensure Java is available if needed by other tools
     openjdk
   ];
+
+  # Activation script to install the Prism Launcher Flatpak on deployment.
+  # This runs during `nixos-rebuild switch` and ensures the Flathub remote and the
+  # `net.prismlauncher.PrismLauncher` Flatpak are installed system-wide.
+  system.activationScripts.install-prism-launcher = {
+    text = ''
+      if command -v flatpak >/dev/null 2>&1; then
+        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo || true
+        # Install system-wide (requires root). If already installed, this is a no-op.
+        flatpak install --system -y flathub net.prismlauncher.PrismLauncher || true
+      fi
+    '';
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
