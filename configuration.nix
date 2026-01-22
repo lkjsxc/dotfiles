@@ -120,6 +120,9 @@
     # Minecraft: Prism Launcher — convenient multi-version launcher for Minecraft
     # Provided by nixpkgs as `prism-launcher` (ensure the channel/flake contains this package)
     prism-launcher
+
+    # Ensure Java is available for the launcher
+    openjdk
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
