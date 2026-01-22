@@ -103,6 +103,7 @@
       prismPackage = if builtins.hasAttr "prism-launcher" pkgs then pkgs.prism-launcher else pkgs.stdenv.mkDerivation {
         name = "prism-launcher-placeholder";
         src = null;
+        dontUnpack = true;
         buildPhase = "true";
         installPhase = ''
           mkdir -p $out/bin

@@ -6,6 +6,7 @@ in {
     pname = "prism-launcher-placeholder";
     version = "0";
     src = null;
+    dontUnpack = true;
     buildPhase = "true";
     installPhase = ''
       mkdir -p $out/bin
