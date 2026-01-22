@@ -124,8 +124,7 @@ EOF
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  # Note: `nixpkgs.config` options are set in flake.nix when importing nixpkgs.
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
