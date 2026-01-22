@@ -12,6 +12,7 @@ AppImage (recommended fallback)
 - Use the helper script to download the latest AppImage and install it into `~/bin`:
   - `./scripts/install_prism_appimage.sh`
 - The script downloads `Prism-Launcher.AppImage` from the official GitHub releases and installs it as `~/bin/prism-launcher`.
+- Safety note: the script follows the `latest` redirect. Verify the downloaded file (size, checksum or run `file ~/bin/prism-launcher`) before launching if you want extra assurance.
 
 Usage
 - Run it from the application launcher (KDE menu) or run `prism-launcher` from a terminal (ensure `~/bin` is in your PATH).
