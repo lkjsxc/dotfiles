@@ -5,9 +5,10 @@
     overlays = [ (import ./overlays/prism.nix) ];
     pkgs = import nixpkgs { inherit system overlays; };
   in {
-    nixosConfigurations.main = pkgs.lib.nixosSystem {
+    nixosConfigurations.main = nixpkgs.lib.nixosSystem {
       system = system;
       modules = [ ./configuration.nix ./hardware-configuration.nix ];
+      pkgs = pkgs;
     };
   };
 }
