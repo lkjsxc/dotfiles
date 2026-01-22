@@ -1,3 +1,17 @@
+# Dotfiles and NixOS configuration
+
+This repository contains my NixOS configuration, hardware capture, and documentation.
+
+Table of contents
+
+- **Configuration**: `configuration.nix` — main system configuration
+- **Flake**: `flake.nix` — flake entry for building NixOS
+- **Hardware**: `hardware-configuration.nix` — generated hardware profile
+- **Docs**: `docs/README.md` — documentation and guides
+
+Recent addition: Prism Launcher (Minecraft) support and docs in `docs/PRISM-LAUNCHER.md`.
+
+See `docs/README.md` for more details.
 # .dotfiles — NixOS configuration repository
 
 This repository contains my NixOS configuration, managed as a flake.
