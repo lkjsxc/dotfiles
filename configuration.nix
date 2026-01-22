@@ -131,9 +131,14 @@
   system.activationScripts.install-prism-launcher = {
     text = ''
       if command -v flatpak >/dev/null 2>&1; then
-        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo || true
-        # Install system-wide (requires root). If already installed, this is a no-op.
-        flatpak install --system -y flathub net.prismlauncher.PrismLauncher || true
+        # Ensure system repo directory exists so `flatpak install --system` works.
+        mkdir -p /var/lib/flatpak
+
+        # Add Flathub remote if missing and install system-wide
+        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+        # Install system-wide (requires root). If already installed, this will be a no-op.
+        flatpak install --system -y flathub net.prismlauncher.PrismLauncher
       fi
     '';
   };
