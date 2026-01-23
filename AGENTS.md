@@ -26,6 +26,9 @@ yay -S lutris
 yay -S cifs-utils
 sudo mkdir /mnt/lkjsxc-server
 
+# Install Wine and NVIDIA 32-bit drivers for RTX 3070
+./wine-nvidia-setup/install-wine-nvidia.sh
+
 # Install Docker and Docker Compose
 sudo pacman -S docker docker-compose
 sudo systemctl enable docker
@@ -67,6 +70,9 @@ sudo systemctl status docker
 # Test Docker functionality
 docker run hello-world
 ./docker/tests/test-docker.sh
+
+# Verify Wine and NVIDIA 32-bit setup
+./wine-nvidia-setup/tests/validate-setup.sh
 ```
 
 ### Linting/Validation
@@ -215,7 +221,7 @@ This is a **personal Arch Linux dotfiles repository** designed for:
 - AI-agent centric development workflow
 - Japanese language support (fcitx5 + mozc)
 - Development tools setup (VSCode, Neovim, Git)
-- Gaming configuration (Lutris)
+- Gaming configuration (Lutris, Wine, NVIDIA 32-bit drivers)
 - Samba client setup for network shares
 
 The repository follows a **minimalist, function-first approach** with strict size constraints and frequent refactoring cycles. All setup is designed to be automated and reproducible across Arch Linux installations.
