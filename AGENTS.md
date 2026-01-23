@@ -25,6 +25,15 @@ yay -S lutris
 # Install samba client
 yay -S cifs-utils
 sudo mkdir /mnt/lkjsxc-server
+
+# Install Docker and Docker Compose
+sudo pacman -S docker docker-compose
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo usermod -aG docker "$USER"
+
+# Or use the installation script
+./docker/scripts/install-docker.sh
 ```
 
 ### Development Environment
@@ -49,6 +58,15 @@ git config --list
 
 # Check mount points (for samba)
 mount | grep cifs
+
+# Verify Docker installation
+docker --version
+docker-compose --version
+sudo systemctl status docker
+
+# Test Docker functionality
+docker run hello-world
+./docker/tests/test-docker.sh
 ```
 
 ### Linting/Validation
