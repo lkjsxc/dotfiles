@@ -1,57 +1,68 @@
-# memo.txt
+# Arch Linux Dotfiles - Quick Reference
 
-this repository is for archlinux
+This repository contains comprehensive Arch Linux setup scripts and configurations.
 
-# steps to setup a new archlinux system
+## Quick Setup Commands
 
-## pacman update
+```bash
+# Full system setup
+./setup-scripts/install-system.sh
+./setup-scripts/setup-user.sh
+./setup-scripts/setup-development.sh
 
+# Deploy configurations
+./automation/deploy-configs.sh
+
+# Validate installation
+./tests/validate-system.sh
+```
+
+## Essential Commands Reference
+
+### System Management
+```bash
+# Update system
 sudo pacman -Syu
 
-## install yay
+# Install packages
+sudo pacman -S package-name
+yay -S aur-package-name
 
-sudo pacman -S --needed git base-devel
+# Remove packages
+sudo pacman -Rns package-name
+```
 
-git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && rm -rf yay
+### Development Setup
+```bash
+# Git configuration
+git config --global user.email "lkjsxc@gmail.com"
+git config --global user.name "lkjsxc"
 
-## git config (needs update)
+# Python environment
+pip install virtualenv black flake8 pytest
 
-git config --global user.email lkjsxc@gmail.com
+# Node.js environment
+npm install -g typescript ts-node yarn
+```
 
-git config --global user.name lkjsxc
+### Key Installations
+- **Editor**: neovim, visual-studio-code-bin
+- **Browser**: microsoft-edge-stable-bin
+- **Fonts**: noto-fonts-cjk, noto-fonts-emoji, fcitx5-mozc
+- **Gaming**: lutris
+- **Network**: cifs-utils
+- **AI Tools**: opencode
 
-## install microsoft-edge
+### Directory Structure
+- `setup-scripts/` - Installation scripts
+- `config-files/` - Configuration templates
+- `docs/` - Documentation
+- `tests/` - Validation scripts
+- `automation/` - Deployment utilities
 
-yay -S microsoft-edge-stable-bin
+### Configuration Files
+- `~/.bashrc` - Shell configuration
+- `~/.gitconfig` - Git settings
+- `~/.config/Code/User/settings.json` - VSCode settings
 
-## install vscode
-
-yay -S visual-studio-code-bin
-
-## install neovim
-
-sudo pacman -S neovim
-
-## install fonts
-
-sudo pacman -S noto-fonts-cjk noto-fonts-emoji noto-fonts
-
-sudo pacman -S fcitx5-im fcitx5-mozc
-
-## samba client (needs update)
-
-### placeholder echo to /etc/fstab
-
-yay -S cifs-utils
-
-sudo mkdir /mnt/lkjsxc-server
-
-## opencode
-
-yay -S opencode
-
-## gaming (needs update)
-
-### install lutris
-
-yay -S lutris
+For detailed documentation, see `docs/` directory.

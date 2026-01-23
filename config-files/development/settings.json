@@ -1,0 +1,22 @@
+{
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.rulers": [80, 120],
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.iconTheme": "material-icon-theme",
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/node_modules": true
+    },
+    "extensions.autoUpdate": false,
+    "extensions.autoCheckUpdates": false,
+    "telemetry.telemetryLevel": "off",
+    "update.mode": "none",
+    "workbench.startupEditor": "none"
+}
