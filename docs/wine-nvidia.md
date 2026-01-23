@@ -27,7 +27,7 @@ sudo sed -i '/\[multilib\]/,+1 s/^#//' /etc/pacman.conf
 
 ```bash
 sudo pacman -Syu
-sudo pacman -S lib32-nvidia-utils lib32-mesa lib32-libgl lib32-gcc-libs
+sudo pacman -S lib32-nvidia-utils lib32-mesa lib32-libgl lib32-gcc-libs lib32-vulkan-icd-loader
 ```
 
 ### Install Wine Dependencies
@@ -65,6 +65,40 @@ If applications fail to start, verify all 32-bit libraries are present:
 
 ```bash
 ldd $(which wine) | grep "not found"
+```
+
+### Vulkan Issues
+
+Install missing 32-bit Vulkan loader:
+
+```bash
+sudo pacman -S lib32-vulkan-icd-loader
+```
+
+Verify Vulkan support:
+
+```bash
+vulkaninfo --summary
+```
+
+### Lutris Prefix Issues
+
+Remove corrupted Lutris game prefix:
+
+```bash
+./src/wine-nvidia-setup/cleanup-lutris-prefix.sh arknights-endfield
+```
+
+List all available prefixes:
+
+```bash
+./src/wine-nvidia-setup/cleanup-lutris-prefix.sh --list
+```
+
+Remove all prefixes (dangerous):
+
+```bash
+./src/wine-nvidia-setup/cleanup-lutris-prefix.sh --all
 ```
 
 ### OpenGL Issues

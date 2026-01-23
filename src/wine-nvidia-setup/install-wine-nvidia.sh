@@ -50,6 +50,7 @@ install_nvidia_32bit() {
         "lib32-libxrandr"
         "lib32-libxss"
         "lib32-libxtst"
+        "lib32-vulkan-icd-loader"
     )
     
     sudo pacman -Syu --noconfirm
