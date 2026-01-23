@@ -16,6 +16,7 @@ Comprehensive documentation for the Arch Linux dotfiles repository.
 - **[Automation Scripts](./automation.md)** - Deployment, backup, and maintenance automation
 - **[Testing Suite](./testing.md)** - Validation and testing framework
 - **[Docker Setup](./docker.md)** - Containerization platform and development services
+- **[Wine and NVIDIA Setup](./wine-nvidia.md)** - Gaming configuration with RTX 3070 support
 
 ## Quick Reference
 
@@ -36,6 +37,9 @@ Comprehensive documentation for the Arch Linux dotfiles repository.
 
 # Docker setup
 ./src/docker/scripts/install-docker.sh
+
+# Wine and NVIDIA gaming setup
+./src/wine-nvidia-setup/install-wine-nvidia.sh
 ```
 
 ### Configuration Files
@@ -50,3 +54,4 @@ Comprehensive documentation for the Arch Linux dotfiles repository.
 - [Automation](./automation.md)
 - [Testing](./testing.md)
 - [Docker deployment](./docker.md)
+- [Gaming setup](./wine-nvidia.md)

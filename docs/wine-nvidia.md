@@ -50,6 +50,9 @@ ldconfig -p | grep libGL.so.1
 After installation, configure Wine for gaming:
 
 ```bash
+./src/wine-nvidia-setup/install-wine-nvidia.sh  # Automated setup
+./src/wine-nvidia-setup/tests/validate-setup.sh  # Validate installation
+
 winecfg  # Configure Wine settings
 winetricks dxvk vkd3d  # Install DirectX/Vulkan support
 ```

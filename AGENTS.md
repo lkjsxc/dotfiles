@@ -27,7 +27,7 @@ yay -S cifs-utils
 sudo mkdir /mnt/lkjsxc-server
 
 # Install Wine and NVIDIA 32-bit drivers for RTX 3070
-./wine-nvidia-setup/install-wine-nvidia.sh
+./src/wine-nvidia-setup/install-wine-nvidia.sh
 
 # Install Docker and Docker Compose
 sudo pacman -S docker docker-compose
@@ -72,7 +72,7 @@ docker run hello-world
 ./docker/tests/test-docker.sh
 
 # Verify Wine and NVIDIA 32-bit setup
-./wine-nvidia-setup/tests/validate-setup.sh
+./src/wine-nvidia-setup/tests/validate-setup.sh
 ```
 
 ### Linting/Validation
