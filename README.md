@@ -4,11 +4,14 @@ Comprehensive Arch Linux system configuration and automation repository designed
 
 ## Repository Structure
 
-- **[`setup-scripts/`](./setup-scripts/)** - System installation and package management scripts
-- **[`config-files/`](./config-files/)** - Configuration files and dotfiles
+- **[`src/`](./src/)** - Source code and implementation
+  - [`setup-scripts/`](./src/setup-scripts/) - System installation and package management scripts
+  - [`config-files/`](./src/config-files/) - Configuration files and dotfiles
+  - [`automation/`](./src/automation/) - Deployment and automation utilities
+  - [`tests/`](./src/tests/) - Validation and testing scripts
+  - [`docker/`](./src/docker/) - Docker setup and containerization
 - **[`docs/`](./docs/)** - Documentation and guides
-- **[`tests/`](./tests/)** - Validation and testing scripts
-- **[`automation/`](./automation/)** - Deployment and automation utilities
+- **[`AGENTS.md`](./AGENTS.md)** - AI agent development guidelines
 
 ## Quick Start
 
@@ -18,13 +21,13 @@ git clone https://github.com/lkjsxc/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 
 # Run initial setup
-./setup-scripts/install-system.sh
+./src/setup-scripts/install-system.sh
 
 # Configure user environment
-./setup-scripts/setup-user.sh
+./src/setup-scripts/setup-user.sh
 
 # Validate installation
-./tests/validate-system.sh
+./src/tests/validate-system.sh
 ```
 
 ## Key Features
@@ -35,14 +38,12 @@ cd ~/dotfiles
 - **Japanese Language Support** - fcitx5 + mozc input method
 - **Gaming Setup** - Lutris and gaming tools
 - **Network Storage** - Samba client configuration
+- **Docker Platform** - Complete containerization setup
 - **AI-First Design** - Optimized for AI agent development workflow
 
 ## Documentation
 
-- [Installation Guide](./docs/installation.md)
-- [Configuration Reference](./docs/configuration.md)
-- [Troubleshooting](./docs/troubleshooting.md)
-- [Development Guide](./docs/development.md)
+See [docs/README.md](./docs/README.md) for complete documentation.
 
 ## System Requirements
 

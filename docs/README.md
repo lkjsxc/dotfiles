@@ -4,26 +4,38 @@ Comprehensive documentation for the Arch Linux dotfiles repository.
 
 ## Documentation Structure
 
+### Core Documentation
 - **[Installation Guide](./installation.md)** - Complete installation and setup instructions
 - **[Configuration Reference](./configuration.md)** - Detailed configuration options and customization
 - **[Development Guide](./development.md)** - Development environment and workflow
 - **[Troubleshooting](./troubleshooting.md)** - Common issues and solutions
-- **[Package Reference](./packages.md)** - Package list and descriptions
-- **[Architecture](./architecture.md)** - Repository design and structure
+
+### Component Documentation
+- **[Setup Scripts](./setup-scripts.md)** - System installation and package management automation
+- **[Configuration Files](./config-files.md)** - Dotfiles and system configuration templates
+- **[Automation Scripts](./automation.md)** - Deployment, backup, and maintenance automation
+- **[Testing Suite](./testing.md)** - Validation and testing framework
+- **[Docker Setup](./docker.md)** - Containerization platform and development services
 
 ## Quick Reference
 
 ### Essential Commands
 ```bash
 # Full system setup
-./setup-scripts/install-system.sh
-./setup-scripts/setup-user.sh
+./src/setup-scripts/install-system.sh
+./src/setup-scripts/setup-user.sh
 
 # Development environment
-./setup-scripts/setup-development.sh
+./src/setup-scripts/setup-development.sh
 
 # Validate installation
-./tests/validate-system.sh
+./src/tests/validate-system.sh
+
+# Deploy configurations
+./src/automation/deploy-configs.sh
+
+# Docker setup
+./src/docker/scripts/install-docker.sh
 ```
 
 ### Configuration Files
@@ -33,6 +45,8 @@ Comprehensive documentation for the Arch Linux dotfiles repository.
 - `/etc/` - System-wide settings
 
 ### Common Tasks
-- [Adding new packages](./packages.md#adding-packages)
-- [Custom configurations](./configuration.md#customization)
-- [System updates](./troubleshooting.md#system-updates)
+- [System setup](./installation.md)
+- [Configuration management](./config-files.md)
+- [Automation](./automation.md)
+- [Testing](./testing.md)
+- [Docker deployment](./docker.md)

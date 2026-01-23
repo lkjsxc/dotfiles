@@ -1,31 +1,30 @@
-# Docker Setup
+# Docker Setup Documentation
 
 Complete Docker containerization platform setup for Arch Linux with optimized configurations and development tools.
-
-## Directory Structure
-
-- **[`scripts/`](./scripts/)** - Installation and management scripts
-- **[`config-files/`](./config-files/)** - Configuration files and templates
-- **[`docs/`](./docs/)** - Documentation and guides
-- **[`tests/`](./tests/)** - Validation and testing scripts
 
 ## Quick Start
 
 ```bash
 # Install Docker and Docker Compose
-./docker/scripts/install-docker.sh
+./src/docker/scripts/install-docker.sh
 
 # Apply Docker daemon configuration
-sudo cp docker/config-files/daemon.json /etc/docker/daemon.json
+sudo cp src/docker/config-files/daemon.json /etc/docker/daemon.json
 sudo systemctl restart docker
 
 # Test setup with sample services
-cd docker/config-files
+cd src/docker/config-files
 docker-compose up -d
 
 # Verify installation
-./docker/tests/test-docker.sh
+./src/docker/tests/test-docker.sh
 ```
+
+## Directory Structure
+
+- **[`scripts/`](../../src/docker/scripts/)** - Installation and management scripts
+- **[`config-files/`](../../src/docker/config-files/)** - Configuration files and templates
+- **[`tests/`](../../src/docker/tests/)** - Validation and testing scripts
 
 ## Installation
 
@@ -147,19 +146,3 @@ ss -tulpn | grep :8080
 - Use Alpine Linux images for smaller footprints
 - Implement health checks in containers
 - Configure resource limits in docker-compose
-
-## Integration
-
-### Development Workflow
-
-1. Clone repository and run Docker installation
-2. Configure daemon settings for performance
-3. Use test stack for development validation
-4. Extend docker-compose.yml for project needs
-
-### CI/CD Integration
-
-Docker services integrate with existing automation:
-- Automated testing with container validation
-- Configuration deployment via automation scripts
-- Backup and restore functionality for container data
