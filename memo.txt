@@ -1,0 +1,57 @@
+# memo.txt
+
+this repository is for archlinux
+
+# steps to setup a new archlinux system
+
+## pacman update
+
+sudo pacman -Syu
+
+## install yay
+
+sudo pacman -S --needed git base-devel
+
+git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && rm -rf yay
+
+## git config (needs update)
+
+git config --global user.email lkjsxc@gmail.com
+
+git config --global user.name lkjsxc
+
+## install microsoft-edge
+
+yay -S microsoft-edge-stable-bin
+
+## install vscode
+
+yay -S visual-studio-code-bin
+
+## install neovim
+
+sudo pacman -S neovim
+
+## install fonts
+
+sudo pacman -S noto-fonts-cjk noto-fonts-emoji noto-fonts
+
+sudo pacman -S fcitx5-im fcitx5-mozc
+
+## samba client (needs update)
+
+### placeholder echo to /etc/fstab
+
+yay -S cifs-utils
+
+sudo mkdir /mnt/lkjsxc-server
+
+## opencode
+
+yay -S opencode
+
+## gaming (needs update)
+
+### install lutris
+
+yay -S lutris
