@@ -23,8 +23,13 @@ backup_config() {
 enable_multilib() {
     log "Enabling multilib repository..."
     
-    if ! sudo grep -q "^\[multilib\]" "$PACMAN_CONF"; then
+    if ! grep -q "#\[multilib\]" "$PACMAN_CONF" && ! grep -q "^\[multilib\]" "$PACMAN_CONF"; then
         error_exit "Multilib section not found in $PACMAN_CONF"
+    fi
+    
+    if grep -q "^\[multilib\]" "$PACMAN_CONF"; then
+        log "Multilib repository already enabled"
+        return 0
     fi
     
     sudo sed -i '/\[multilib\]/,+1 s/^#//' "$PACMAN_CONF"
