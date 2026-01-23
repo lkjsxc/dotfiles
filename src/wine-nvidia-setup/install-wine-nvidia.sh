@@ -63,9 +63,8 @@ install_wine() {
     local wine_packages=(
         "wine"
         "wine-mono"
+        "wine-gecko"
         "winetricks"
-        "dxvk"
-        "vkd3d"
     )
     
     sudo pacman -S --noconfirm "${wine_packages[@]}"

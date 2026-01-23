@@ -20,13 +20,20 @@ check_library() {
     local library="$1"
     local arch="${2:-64}"
     
-    if ldconfig -p | grep -q "$library.*$arch"; then
-        echo "✓ $library ($arch-bit) available"
-        return 0
+    if [[ "$arch" == "64" ]]; then
+        if ldconfig -p | grep -q "$library.*x86-64"; then
+            echo "✓ $library ($arch-bit) available"
+            return 0
+        fi
     else
-        echo "✗ $library ($arch-bit) NOT available"
-        return 1
+        if ldconfig -p | grep -E "$library.*(lib32|libc6[^,])"; then
+            echo "✓ $library ($arch-bit) available"
+            return 0
+        fi
     fi
+    
+    echo "✗ $library ($arch-bit) NOT available"
+    return 1
 }
 
 check_multilib() {
@@ -62,8 +69,8 @@ check_wine() {
     
     check_package "wine" || failed=1
     check_package "wine-mono" || failed=1
+    check_package "wine-gecko" || failed=1
     check_package "winetricks" || failed=1
-    check_package "dxvk" || failed=1
     
     if command -v wine >/dev/null 2>&1; then
         echo "✓ Wine executable available"
